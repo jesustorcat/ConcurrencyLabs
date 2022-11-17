@@ -20,9 +20,9 @@ public class BanketNoWait {
       c.setName("Peter");
       c.start();
 
-      // Xana
+      // Berta
       Thread d = new Savage(pot);
-      d.setName("Xana");
+      d.setName("Berta");
       d.start();
 
       // Tom
@@ -40,9 +40,9 @@ public class BanketNoWait {
       g.setName("Kim");
       g.start();
 
-      // Berta
+      // Xana
       Thread h = new Savage(pot);
-      h.setName("Berta");
+      h.setName("Xana");
       h.start();
 
       // Cook
