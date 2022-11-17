@@ -1,4 +1,4 @@
-package packageCPDS;
+package packageCPDS.Exercise1;
 
 public class Savage extends Thread {
   Pot pot;
