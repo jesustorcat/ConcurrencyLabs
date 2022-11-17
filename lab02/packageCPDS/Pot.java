@@ -9,38 +9,35 @@ public class Pot {
   }
 
   public synchronized void getserving() throws InterruptedException {
-    // Condition synchronization: at least one serving available,
+     // Condition synchronization: at least one serving available,
     // otherwise, go to the Waiting Set til the cook fill the pot
     while (servings == 0) {
-      System.out.println(Thread.currentThread().getName() + " is waiting");
+      System.out.println(Thread.currentThread().getName() + " has to wait ");
       wait();
     }
-
-    while (servings == 0) {
-      System.out.println(Thread.currentThread().getName());
-    }
     --servings;
-    System.out.println(Thread.currentThread().getName());
+    // while (servings > 0) {
+    //   System.out.println(Thread.currentThread().getName() + "is serving");
+    // }
+    System.out.println(Thread.currentThread().getName() + " is serving");
 
     // when necessary, wake up threads  in Waiting Set in order to asure
     // a runnable cook
 
     if (servings == 0) {
-      print_servings();
+      notifyAll();
     }
+    print_servings();
   }
 
   public synchronized void fillpot() throws InterruptedException {
     //Condition synchronization: .....
     while (servings > 0) {
-      System.out.println(Thread.currentThread().getName() + " is waiting");
+      System.out.println(Thread.currentThread().getName() + " has to wait");
       wait();
     }
-    while (servings > 0) {
-      System.out.println(Thread.currentThread().getName() + " is waiting");
-    }
     servings = capacity;
-    System.out.println(servings);
+    System.out.println(Thread.currentThread().getName() + " is filling the pot");
     // wake up threads in Waiting Set in order to asure....
     print_servings();
     notifyAll();
